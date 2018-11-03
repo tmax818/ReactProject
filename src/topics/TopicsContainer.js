@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchTopics } from './actions';
+import { fetchTopics, postTopic } from '../actions';
+import TopicList from './TopicList';
+import NewForm from '../common/NewForm';
 
 class TopicsContainer extends Component {
   componentDidMount() {
@@ -10,10 +12,12 @@ class TopicsContainer extends Component {
   }
 
   render() {
-    console.log(this.props.topics);
+    console.log(this.props);
     return (
       <div>
-        <h1>Topics Container</h1>
+        <h5>Topics Container</h5>
+        <TopicList props={this.props} />
+        <NewForm postFunc={this.props.postTopic} />
       </div>
     );
   }
@@ -29,6 +33,10 @@ const mapDispathtoProps = dispatch => {
   return {
     fetchTopics: () => {
       dispatch(fetchTopics());
+    },
+
+    postTopic: topic => {
+      dispatch(postTopic(topic));
     }
   };
 };

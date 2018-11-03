@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './common/Header';
 import { Route, Switch } from 'react-router-dom';
-import TopicsContainer from './TopicsContainer';
+import TopicsContainer from './topics/TopicsContainer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
