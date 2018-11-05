@@ -19,6 +19,7 @@ class NewForm extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

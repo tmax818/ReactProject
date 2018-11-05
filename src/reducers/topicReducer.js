@@ -1,4 +1,4 @@
-import { FETCH_TOPICS, POST_TOPIC } from '../actions';
+import { FETCH_TOPICS, POST_TOPIC, POST_SUBJECT } from '../actions';
 
 const topicReducer = (state = [], action) => {
   switch (action.type) {
@@ -6,6 +6,9 @@ const topicReducer = (state = [], action) => {
       return state.concat(action.payload.data);
     case POST_TOPIC:
       return state.concat(action.payload.data);
+    case POST_SUBJECT:
+      console.log(action);
+      return state;
     default:
       return state;
   }

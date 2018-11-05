@@ -1,35 +1,38 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { postSubject } from '../actions';
+import SubjectList from './SubjectList';
+import NewForm from '../common/NewForm';
 
 class SubjectsContainer extends Component {
   render() {
-    const { subjects } = this.props.location.state.topic;
-    const { topic } = this.props.location.state;
-    const { match } = this.props;
-    console.log(subjects, topic, match);
     return (
       <div>
         <p>Subjects Container</p>
-        <h2>{topic.title}</h2>
-        <ul>
-          {subjects.map(subject => {
-            return (
-              <div>
-                <Link
-                  key={subject.id}
-                  to={{
-                    pathname: `${match.url}/subjects/${subject.id}`,
-                    state: { cards: subject.cards, subject: subject }
-                  }}
-                >
-                  {subject.title}
-                </Link>
-              </div>
-            );
-          })}
-        </ul>
+        <SubjectList props={this.props} />
+        <hr />
+        <h4>Add New Subject</h4>
+        <NewForm postFunc={this.props.postSubject} />
       </div>
     );
   }
 }
-export default SubjectsContainer;
+
+const mapStatetoProps = state => {
+  return {
+    topics: state.topics
+  };
+};
+
+const mapDispathtoProps = dispatch => {
+  return {
+    postSubject: (tid, subject) => {
+      dispatch(postSubject(tid, subject));
+    }
+  };
+};
+
+export default connect(
+  mapStatetoProps,
+  mapDispathtoProps
+)(SubjectsContainer);
