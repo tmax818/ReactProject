@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const TopicList = ({ props }) => {
-  console.log(props.match);
+  console.log(props);
   return props.topics.map(topic => {
     return (
       <Link
         key={topic.id}
         to={{
           pathname: `/topics/${topic.id}`,
-          state: { title: topic.title, topic_id: topic.id }
+          state: { topic: topic }
         }}
         className="btn btn-primary"
       >
