@@ -15,8 +15,10 @@ class TopicsContainer extends Component {
     console.log(this.props);
     return (
       <div>
-        <h5>Topics Container</h5>
+        <p>Topics Container</p>
         <TopicList props={this.props} />
+        <hr />
+        <h4>Add New Topic</h4>
         <NewForm postFunc={this.props.postTopic} />
       </div>
     );
