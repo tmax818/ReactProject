@@ -3,26 +3,26 @@ export const FETCH_TOPICS = 'fetch-topics';
 export const POST_TOPIC = 'post-topic';
 export const POST_SUBJECT = 'post-subject';
 
-const ROOT_URL = 'http://localhost:3001/api/topics';
+const ROOT_URL = 'http://localhost:3001/api';
 
 export const fetchTopics = () => {
-  const req = axios.get(`${ROOT_URL}`);
+  const req = axios.get(`${ROOT_URL}/topics`);
   return {
     type: FETCH_TOPICS,
     payload: req
   };
 };
 
-export const postTopic = value => {
-  const req = axios.post(`${ROOT_URL}`, { title: value });
+export const postTopic = (path, value) => {
+  const req = axios.post(`${ROOT_URL}/${path}`, { title: value });
   return {
     type: POST_TOPIC,
     payload: req
   };
 };
 
-export const postSubject = (tid, value) => {
-  const req = axios.post(`${ROOT_URL}/${tid}/subjects`, { title: value });
+export const postSubject = (path, value) => {
+  const req = axios.post(`${ROOT_URL}/${path}/subjects`, { title: value });
   return {
     type: POST_SUBJECT,
     payload: req
