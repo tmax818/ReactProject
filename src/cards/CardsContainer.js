@@ -7,7 +7,7 @@ export default class CardsContainer extends Component {
     return (
       <div>
         <p>CardsContainer</p>
-        <h1>{location.state.subject.title}</h1>
+        <h4>{location.state.title}</h4>
       </div>
     );
   }

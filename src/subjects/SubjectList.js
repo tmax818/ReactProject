@@ -1,33 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SubjectList = props => {
-  const { subjects } = props.props.location.state.topic;
-  const { topic } = props.props.location.state;
-  const { match } = props.props;
-  console.log(subjects, topic, match);
-  console.log(props);
+const SubjectList = ({ props }) => {
+  console.log(props.subjects);
   return (
     <div>
-      <h2>{topic.title}</h2>
-      <ul>
-        {subjects.map(subject => {
-          return (
-            <div>
-              <Link
-                key={subject.id}
-                to={{
-                  pathname: `${match.url}/subjects/${subject.id}`,
-                  state: { cards: subject.cards, subject: subject }
-                }}
-                className="btn btn-primary"
-              >
-                {subject.title}
-              </Link>
-            </div>
-          );
-        })}
-      </ul>
+      <p>sub list</p>
+      {props.subjects.map(subject => {
+        return (
+          <Link
+            key={subject.id}
+            to={{
+              pathname: `${props.match.url}/subjects/${subject.id}`,
+              state: { cards: subject.cards, title: subject.title }
+            }}
+          >
+            {subject.title}
+          </Link>
+        );
+      })}
     </div>
   );
 };

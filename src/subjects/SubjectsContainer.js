@@ -6,9 +6,7 @@ import NewForm from '../common/NewForm';
 
 class SubjectsContainer extends Component {
   componentDidMount() {
-    if (this.props.subjects.length === 0) {
-      this.props.fetchSubjects(this.props.match.url);
-    }
+    this.props.fetchSubjects(this.props.match.url);
   }
 
   render() {

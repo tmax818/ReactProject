@@ -6,8 +6,7 @@ const subjectReducer = (state = [], action) => {
       return state.concat(action.payload.data);
     case FETCH_SUBJECTS:
       console.log(action);
-      return state.concat(action.payload.data);
-      return state;
+      return action.payload.data.subjects;
     default:
       return state;
   }
