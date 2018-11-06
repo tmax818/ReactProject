@@ -9,9 +9,6 @@ class TopicsContainer extends Component {
     if (this.props.topics.length === 0) {
       this.props.fetchTopics();
     }
-    let path = this.props.match.url;
-    let topic;
-    this.props.postTopic(path, topic);
   }
 
   render() {

@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { postSubject } from '../actions';
+import { postSubject, fetchSubjects } from '../actions';
 import SubjectList from './SubjectList';
 import NewForm from '../common/NewForm';
 
 class SubjectsContainer extends Component {
+  componentDidMount() {
+    if (this.props.subjects.length === 0) {
+      this.props.fetchSubjects(this.props.match.url);
+    }
+  }
+
   render() {
+    console.log(this.props.subjects);
     return (
       <div>
         <p>Subjects Container</p>
@@ -29,6 +36,10 @@ const mapStatetoProps = state => {
 
 const mapDispathtoProps = dispatch => {
   return {
+    fetchSubjects: path => {
+      dispatch(fetchSubjects(path));
+    },
+
     postSubject: (tid, subject) => {
       dispatch(postSubject(tid, subject));
     }
