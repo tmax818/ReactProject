@@ -7,7 +7,7 @@ const topicReducer = (state = [], action) => {
     case POST_TOPIC:
       return state.concat(action.payload.data);
     case POST_SUBJECT:
-      console.log(action);
+      console.log(state, action.payload.data);
       return state;
     default:
       return state;

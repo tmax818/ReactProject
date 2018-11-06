@@ -9,6 +9,9 @@ class TopicsContainer extends Component {
     if (this.props.topics.length === 0) {
       this.props.fetchTopics();
     }
+    let path = this.props.match.url;
+    let topic;
+    this.props.postTopic(path, topic);
   }
 
   render() {
@@ -19,7 +22,7 @@ class TopicsContainer extends Component {
         <TopicList props={this.props} />
         <hr />
         <h4>Add New Topic</h4>
-        <NewForm postFunc={this.props.postTopic} />
+        <NewForm postFunc={this.props.postTopic} path={this.props.match.url} />
       </div>
     );
   }
@@ -37,8 +40,8 @@ const mapDispathtoProps = dispatch => {
       dispatch(fetchTopics());
     },
 
-    postTopic: topic => {
-      dispatch(postTopic(topic));
+    postTopic: (path, topic) => {
+      dispatch(postTopic(path, topic));
     }
   };
 };

@@ -14,7 +14,7 @@ class NewForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.postFunc(this.state.input);
+    this.props.postFunc(this.props.path, this.state.input);
     this.setState({ input: '' });
   };
 

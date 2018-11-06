@@ -12,7 +12,10 @@ class SubjectsContainer extends Component {
         <SubjectList props={this.props} />
         <hr />
         <h4>Add New Subject</h4>
-        <NewForm postFunc={this.props.postSubject} />
+        <NewForm
+          postFunc={this.props.postSubject}
+          path={this.props.match.url}
+        />
       </div>
     );
   }
@@ -20,7 +23,7 @@ class SubjectsContainer extends Component {
 
 const mapStatetoProps = state => {
   return {
-    topics: state.topics
+    subjects: state.subjects
   };
 };
 
