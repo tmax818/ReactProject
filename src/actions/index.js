@@ -2,7 +2,6 @@ import axios from 'axios';
 export const FETCH_TOPICS = 'fetch-topics';
 export const POST_TOPIC = 'post-topic';
 export const POST_SUBJECT = 'post-subject';
-export const SHOW_CARD = 'show-card';
 
 const ROOT_URL = 'http://localhost:3001/api/';
 
@@ -27,12 +26,5 @@ export const postSubject = (path, value) => {
   return {
     type: POST_SUBJECT,
     payload: req
-  };
-};
-
-export const showCard = () => {
-  return {
-    type: SHOW_CARD,
-    payload: true
   };
 };

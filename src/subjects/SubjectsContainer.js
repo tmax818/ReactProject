@@ -9,7 +9,11 @@ class SubjectsContainer extends Component {
     console.log(this.props);
     return (
       <div>
-        <SubjectList props={this.props} />
+        <SubjectList
+          location={this.props.location}
+          match={this.props.match}
+          subjects={this.props.subjects}
+        />
       </div>
     );
   }

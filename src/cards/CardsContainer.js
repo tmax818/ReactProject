@@ -1,32 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showCard } from '../actions';
-import CardFront from './CardFront';
-import CardBack from './CardBack';
-import ShowBtn from './ShowBtn';
+import Card from './Card';
+import CardControls from './CardControls';
 
 class CardsContainer extends Component {
-  handleClick = e => {
-    e.preventDefault();
-    this.props.showCard();
+  state = {
+    show: false,
+    card: null
   };
 
-  makeCard = cards => {
-    return cards.shift();
+  componentWillMount() {
+    this.makeCards();
+  }
+
+  handleClick = e => {
+    e.preventDefault();
+    this.setState({ show: true });
+  };
+
+  makeCards = () => {
+    let card = this.props.location.state.cards.shift();
+    this.setState(state => {
+      return { card: card };
+    });
   };
 
   render() {
-    console.log(this.props.cards);
-    const { location } = this.props;
-    const { cards } = location.state;
-    let card = this.makeCard(cards);
+    console.log(this.state.card);
     return (
       <div>
         <p>CardsContainer</p>
-        <h4>{location.state.title}</h4>
-        <CardFront card={card} />
-        <ShowBtn handleClick={this.handleClick} />
-        {this.props.cards.show ? <CardBack card={card} /> : null}
+        <Card
+          card={this.state.card}
+          makeCards={this.makeCards}
+          show={this.state.show}
+        />
+
+        {this.state.show ? (
+          <CardControls />
+        ) : (
+          <button onClick={this.handleClick}>Show</button>
+        )}
       </div>
     );
   }
@@ -41,11 +55,7 @@ const mapStatetoProps = state => {
 };
 
 const mapDispathtoProps = dispatch => {
-  return {
-    showCard: () => {
-      dispatch(showCard());
-    }
-  };
+  return {};
 };
 
 export default connect(

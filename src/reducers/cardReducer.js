@@ -1,9 +1,7 @@
-import { SHOW_CARD, FETCH_TOPICS } from '../actions';
+import { FETCH_TOPICS } from '../actions';
 
-const cardReducer = (state = [{ show: false }], action) => {
+const cardReducer = (state = [], action) => {
   switch (action.type) {
-    case SHOW_CARD:
-      return Object.assign({}, { show: action.payload });
     case FETCH_TOPICS:
       let subjects = action.payload.data.map(topic => {
         return topic.subjects;
