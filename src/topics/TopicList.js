@@ -7,8 +7,11 @@ const TopicList = ({ props }) => {
       <Link
         key={topic.id}
         to={{
-          pathname: `/topics/${topic.id}`,
-          state: { topic: topic }
+          pathname: `${props.match.url}/${topic.id}`,
+          state: {
+            title: topic.title,
+            subjects: topic.subjects
+          }
         }}
         className="btn btn-primary"
       >
