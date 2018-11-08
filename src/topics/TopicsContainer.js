@@ -15,7 +15,7 @@ class TopicsContainer extends Component {
     return (
       <div>
         <p>Topics Container</p>
-        <TopicList props={this.props} />
+        <TopicList topics={this.props.topics} match={this.props.match} />
         <hr />
         <h4>Add New Topic</h4>
         <NewForm postFunc={this.props.postTopic} path={this.props.match.url} />

@@ -18,7 +18,7 @@ const SubjectList = ({ props }) => {
             key={subject.id}
             to={{
               pathname: `${props.match.url}/subjects/${subject.id}`,
-              state: { cards: subject.cards }
+              state: { cards: subject.cards, title: subject.title }
             }}
           >
             {subject.title}

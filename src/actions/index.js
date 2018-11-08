@@ -31,7 +31,6 @@ export const postSubject = (path, value) => {
 };
 
 export const showCard = () => {
-  console.log('hi');
   return {
     type: SHOW_CARD,
     payload: true
