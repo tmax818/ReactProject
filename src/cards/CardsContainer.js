@@ -6,7 +6,7 @@ import CardControls from './CardControls';
 class CardsContainer extends Component {
   state = {
     show: false,
-    card: null
+    card: {}
   };
 
   componentWillMount() {
@@ -20,9 +20,11 @@ class CardsContainer extends Component {
 
   makeCards = () => {
     let card = this.props.location.state.cards.shift();
-    this.setState(state => {
-      return { card: card };
-    });
+    this.setState({ card: card, show: false });
+  };
+
+  updateCard = newCard => {
+    this.setState({ card: newCard });
   };
 
   render() {
@@ -37,7 +39,7 @@ class CardsContainer extends Component {
         />
 
         {this.state.show ? (
-          <CardControls />
+          <CardControls makeCards={this.makeCards} card={this.state.card} />
         ) : (
           <button onClick={this.handleClick}>Show</button>
         )}

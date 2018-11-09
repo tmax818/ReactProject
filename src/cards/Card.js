@@ -7,11 +7,16 @@ export default class Card extends Component {
 
   render() {
     const { card } = this.props;
+    const back = (
+      <div className="card text-center">
+        <h1>{card.back}</h1>
+      </div>
+    );
     return (
-      <div>
+      <div className="card text-center">
         Card
         <h1>{card.front}</h1>
-        {this.props.show ? <h1>{card.back}</h1> : null}
+        {this.props.show ? back : null}
       </div>
     );
   }
