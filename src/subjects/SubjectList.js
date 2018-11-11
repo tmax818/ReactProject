@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Subject from './Subject';
 
 const SubjectList = ({ location, match, subjects }) => {
   let id = parseInt(match.params.id);
@@ -10,19 +11,8 @@ const SubjectList = ({ location, match, subjects }) => {
     <div>
       subjectlist
       <h3>{location.state.title}</h3>
-      {subjectsList.map(subject => {
-        return (
-          <Link
-            key={subject.id}
-            to={{
-              pathname: `${match.url}/subjects/${subject.id}`,
-              state: { cards: subject.cards, title: subject.title }
-            }}
-            className="btn btn-primary"
-          >
-            {subject.title}
-          </Link>
-        );
+      {subjectsList.map((subject, index) => {
+        return <Subject subject={subject} match={match} />;
       })}
     </div>
   );
