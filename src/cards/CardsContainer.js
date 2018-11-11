@@ -12,6 +12,7 @@ class CardsContainer extends Component {
 
   cardFun = () => {
     let card = this.props.location.state.cards.shift();
+    console.log(card);
     this.setState({ card: card });
   };
 
@@ -19,9 +20,17 @@ class CardsContainer extends Component {
     this.cardFun();
   }
 
+  componentWillUnmount() {
+    this.cardFun();
+  }
+
   updateCard = rate => {
     this.setState(state => {
-      return (state.card.rating += parseInt(rate)), state.card.count++;
+      return (
+        (state.card.rating += parseInt(rate)),
+        state.card.count++,
+        (state.show = false)
+      );
     });
   };
 

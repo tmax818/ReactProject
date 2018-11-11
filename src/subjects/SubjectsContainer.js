@@ -14,6 +14,12 @@ class SubjectsContainer extends Component {
           match={this.props.match}
           subjects={this.props.subjects}
         />
+        <hr />
+        <h4>Add New Subject</h4>
+        <NewForm
+          postFunc={this.props.postSubject}
+          path={this.props.match.url}
+        />
       </div>
     );
   }
