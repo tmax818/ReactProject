@@ -1,23 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import Topic from './Topic';
 
 const TopicList = ({ topics, match }) => {
-  return topics.map(topic => {
-    return (
-      <Link
-        key={topic.id}
-        to={{
-          pathname: `${match.url}/${topic.id}`,
-          state: {
-            title: topic.title,
-            subjects: topic.subjects
-          }
-        }}
-        className="btn btn-primary"
-      >
-        {topic.title}
-      </Link>
-    );
+  return topics.map((topic, index) => {
+    return <Topic key={index} topic={topic} index={index} match={match} />;
   });
 };
 export default TopicList;
