@@ -6,7 +6,6 @@ const SubjectList = ({ location, match, subjects }) => {
   let subjectsList = subjects.filter(subject => {
     return subject.topic_id === id;
   });
-  console.log(subjectsList);
   return (
     <div>
       subjectlist

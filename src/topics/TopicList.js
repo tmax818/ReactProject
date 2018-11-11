@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const TopicList = ({ topics, match }) => {
-  console.log(topics, match);
   return topics.map(topic => {
     return (
       <Link

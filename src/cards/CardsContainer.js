@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Card from './Card';
 import CardControls from './CardControls';
+import CardFront from './CardFront';
+import CardBack from './CardBack';
 
 class CardsContainer extends Component {
   state = {
@@ -9,40 +10,41 @@ class CardsContainer extends Component {
     card: {}
   };
 
-  componentWillMount() {
-    this.makeCards();
+  cardFun = () => {
+    let card = this.props.location.state.cards.shift();
+    this.setState({ card: card });
+  };
+
+  componentDidMount() {
+    this.cardFun();
   }
 
-  handleClick = e => {
-    e.preventDefault();
-    this.setState({ show: true });
-  };
-
-  makeCards = () => {
-    let card = this.props.location.state.cards.shift();
-    this.setState({ card: card, show: false });
-  };
-
-  updateCard = newCard => {
-    this.setState({ card: newCard });
+  updateCard = rate => {
+    this.setState(state => {
+      return (state.card.rating += parseInt(rate)), state.card.count++;
+    });
   };
 
   render() {
     console.log(this.state.card);
+    const { title } = this.props.location.state;
+    let back = (
+      <div>
+        <CardBack card={this.state.card} />
+        <CardControls
+          card={this.state.card}
+          updateCard={this.updateCard}
+          cardFun={this.cardFun}
+        />
+      </div>
+    );
     return (
       <div>
-        <p>CardsContainer</p>
-        <Card
-          card={this.state.card}
-          makeCards={this.makeCards}
-          show={this.state.show}
-        />
-
-        {this.state.show ? (
-          <CardControls makeCards={this.makeCards} card={this.state.card} />
-        ) : (
-          <button onClick={this.handleClick}>Show</button>
-        )}
+        card container
+        <h1>{title}</h1>
+        <CardFront card={this.state.card} />
+        <button onClick={() => this.setState({ show: true })}>Show</button>
+        {this.state.show ? back : null}
       </div>
     );
   }

@@ -1,32 +1,13 @@
 import React, { Component } from 'react';
 
 export default class CardControls extends Component {
-  state = {
-    card: {
-      count: 0,
-      rating: null
-    }
-  };
-
-  componentDidMount() {
-    this.setState({ Newcard: this.props.card });
-    console.log(this.state.Newcard);
-  }
-
-  updateCard = count => {
-    this.setState(count => ({
-      count: count
-    }));
-    console.log(this.state.Newcard);
-  };
-
   handleClick = e => {
     e.preventDefault();
-    this.updateCard(1);
+    console.log(e.target.id);
+    this.props.updateCard(e.target.id);
   };
-
   render() {
-    console.log(this.state.Newcard);
+    console.log(this.props);
     return (
       <div className="btn-group">
         <button

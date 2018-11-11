@@ -11,7 +11,6 @@ const cardReducer = (state = [], action) => {
           return sub.cards;
         });
       });
-      console.log(cards);
       return state.concat(...cards);
     default:
       return state;
