@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchTopics, postTopic } from '../actions';
+import { fetchTopics, postTopic, deleteTopic } from '../actions';
 import TopicList from './TopicList';
 import NewForm from '../common/NewForm';
 
@@ -11,11 +11,21 @@ class TopicsContainer extends Component {
     }
   }
 
+  handleDelete = (path, topic, e) => {
+    e.preventDefault();
+    this.props.deleteTopic(path, topic);
+  };
+
   render() {
+    console.log(this.props.topics);
     return (
       <div>
         <p>Topics Container</p>
-        <TopicList topics={this.props.topics} match={this.props.match} />
+        <TopicList
+          topics={this.props.topics}
+          match={this.props.match}
+          handleDelete={this.handleDelete}
+        />
         <hr />
         <h4>Add New Topic</h4>
         <NewForm postFunc={this.props.postTopic} path={this.props.match.url} />
@@ -38,6 +48,10 @@ const mapDispathtoProps = dispatch => {
 
     postTopic: (path, topic) => {
       dispatch(postTopic(path, topic));
+    },
+
+    deleteTopic: (path, topic) => {
+      dispatch(deleteTopic(path, topic));
     }
   };
 };

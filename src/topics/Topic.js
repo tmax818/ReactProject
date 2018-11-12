@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Topic = props => {
-  const { topic, index, match } = props;
+const Topic = ({ topic, index, match, handleDelete }) => {
   return (
     <div className="card-group">
       <div className="card bg-light">
         <div className="card-body text-center">
           <h1>{topic.title}</h1>
           {topic.subjects.map((subject, index) => {
-            return <li>{subject.title}</li>;
+            return <li key={index}>{subject.title}</li>;
           })}
           <Link
             key={index}
@@ -24,7 +23,14 @@ const Topic = props => {
           >
             Study
           </Link>
-          <button className="btn btn-sm btn-danger">Delete</button>
+          <button
+            className="btn btn-sm btn-danger"
+            onClick={e => {
+              return handleDelete(match.url, topic.id, e);
+            }}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>
