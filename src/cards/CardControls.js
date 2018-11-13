@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 export default class CardControls extends Component {
   handleClick = e => {
     e.preventDefault();
-    console.log(e.target.id);
     this.props.updateCard(e.target.id);
     this.props.cardFun();
   };

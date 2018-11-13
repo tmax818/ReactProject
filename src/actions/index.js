@@ -1,5 +1,6 @@
 import axios from 'axios';
 export const FETCH_TOPICS = 'fetch-topics';
+export const FETCH_CARDS = 'fetch-cards';
 export const POST_TOPIC = 'post-topic';
 export const DELETE_TOPIC = 'delete-topic';
 export const POST_SUBJECT = 'post-subject';
@@ -35,6 +36,14 @@ export const postSubject = (path, value) => {
   const req = axios.post(`${ROOT_URL}/${path}/subjects`, { title: value });
   return {
     type: POST_SUBJECT,
+    payload: req
+  };
+};
+
+export const fetchCards = path => {
+  const req = axios.get(`${ROOT_URL}/${path}/cards`);
+  return {
+    type: FETCH_CARDS,
     payload: req
   };
 };

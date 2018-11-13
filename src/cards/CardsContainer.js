@@ -1,51 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CardControls from './CardControls';
+import { fetchCards } from '../actions';
 import Card from './Card';
-import CardFront from './CardFront';
-import CardBack from './CardBack';
 
 class CardsContainer extends Component {
-  state = {
-    show: false,
-    card: {}
-  };
-
-  cardFun = () => {
-    let card = this.props.location.state.cards.shift();
-    console.log(card);
-    this.setState({ card: card });
-  };
-
   componentDidMount() {
-    this.cardFun();
+    this.props.fetchCards(this.props.match.url);
   }
 
-  // componentWillUnmount() {
-  //   this.cardFun();
-  // }
-
-  updateCard = rate => {
-    this.setState(state => {
-      return (
-        (state.card.rating += parseInt(rate)),
-        state.card.count++,
-        (state.show = false)
-      );
-    });
-  };
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(nextProps, nextState);
+    return true;
+  }
 
   render() {
-    const { title } = this.props.location.state;
+    console.log(this.props.cards);
     return (
       <div>
         card container
-        <h1>{title}</h1>
-        <Card
-          card={this.state.card}
-          updateCard={this.updateCard}
-          cardFun={this.cardFun}
-        />
+        <h1 />
       </div>
     );
   }
@@ -60,7 +33,11 @@ const mapStatetoProps = state => {
 };
 
 const mapDispathtoProps = dispatch => {
-  return {};
+  return {
+    fetchCards: path => {
+      dispatch(fetchCards(path));
+    }
+  };
 };
 
 export default connect(

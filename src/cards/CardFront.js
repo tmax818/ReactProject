@@ -1,10 +1,10 @@
 import React from 'react';
 
-const CardFront = ({ card }) => {
-  console.log(card);
+const CardFront = props => {
+  console.log(props);
   return (
     <div>
-      <h1>{card.front}</h1>
+      <h1>{props.card.front}</h1>
     </div>
   );
 };
