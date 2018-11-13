@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCards } from '../actions';
+import { fetchCards, postCard } from '../actions';
 import CardList from './CardList';
+import NewCard from './NewCard';
 
 class CardsContainer extends Component {
   state = {
@@ -11,9 +12,13 @@ class CardsContainer extends Component {
     this.props.fetchCards(this.props.match.url);
   }
 
+  handleNewCard = card => {
+    this.props.postCard(this.props.match.url, card);
+  };
+
   render() {
     console.log(this.props);
-    const { location } = this.props;
+    const { location, match } = this.props;
     return (
       <div>
         card container
@@ -22,6 +27,12 @@ class CardsContainer extends Component {
           Edit Cards
         </button>
         {this.state.show ? <CardList cards={this.props.cards} /> : null}
+        <hr />
+        <h4>Add New Card</h4>
+        <NewCard
+          handleNewCard={this.handleNewCard}
+          subject_id={match.params.sid}
+        />
       </div>
     );
   }
@@ -39,6 +50,10 @@ const mapDispathtoProps = dispatch => {
   return {
     fetchCards: path => {
       dispatch(fetchCards(path));
+    },
+
+    postCard: (path, value) => {
+      dispatch(postCard(path, value));
     }
   };
 };

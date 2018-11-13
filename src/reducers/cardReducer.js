@@ -1,4 +1,4 @@
-import { FETCH_CARDS, FETCH_TOPICS } from '../actions';
+import { FETCH_CARDS, FETCH_TOPICS, POST_CARD } from '../actions';
 
 const cardReducer = (state = [], action) => {
   switch (action.type) {
@@ -14,6 +14,9 @@ const cardReducer = (state = [], action) => {
     //   return state.concat(...cards);
     case FETCH_CARDS:
       return action.payload.data;
+    case POST_CARD:
+      console.log(state, action);
+      return state;
     default:
       return state;
   }

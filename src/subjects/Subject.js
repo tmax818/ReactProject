@@ -8,7 +8,7 @@ const Subject = props => {
     <div className="card-group">
       <div className="card bg-light">
         <div className="card-body text-center">
-          <h3>{subject.title}</h3>
+          <h3>Cards for {subject.title}</h3>
           <p> {subject.cards.length} cards </p>
           <Link
             key={index}
