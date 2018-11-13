@@ -6,7 +6,7 @@ const Topic = ({ topic, index, match, handleDelete }) => {
     <div className="card-group">
       <div className="card bg-light">
         <div className="card-body text-center">
-          <h1>{topic.title}</h1>
+          <h4>{topic.title} Subjects List:</h4>
           {topic.subjects.map((subject, index) => {
             return (
               <li key={index}>
@@ -25,7 +25,7 @@ const Topic = ({ topic, index, match, handleDelete }) => {
             }}
             className="btn btn-sm btn-primary"
           >
-            Edit
+            View Cards
           </Link>
           <button
             className="btn btn-sm btn-danger"

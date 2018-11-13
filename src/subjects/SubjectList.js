@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Subject from './Subject';
 
-const SubjectList = ({ location, match, subjects }) => {
+const SubjectList = ({ location, match, subjects, handleDelete }) => {
   let id = parseInt(match.params.id);
   let subjectsList = subjects.filter(subject => {
     return subject.topic_id === id;
@@ -12,7 +12,14 @@ const SubjectList = ({ location, match, subjects }) => {
       subjectlist
       <h3>{location.state.title}</h3>
       {subjectsList.map((subject, index) => {
-        return <Subject key={index} subject={subject} match={match} />;
+        return (
+          <Subject
+            key={index}
+            subject={subject}
+            match={match}
+            handleDelete={handleDelete}
+          />
+        );
       })}
     </div>
   );

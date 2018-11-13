@@ -6,51 +6,40 @@ import CardBack from './CardBack';
 class Card extends Component {
   state = {
     show: false,
-    card: {}
-  };
-
-  cardFun = () => {
-    let card = this.props.card;
-    console.log(card);
-    this.setState({ card: card, show: false });
+    card: {},
+    Editing: false
   };
 
   componentDidMount() {
-    this.cardFun();
+    this.setCard();
   }
 
-  componentWillUnmount() {
-    this.cardFun();
-  }
-
-  updateCard = rate => {
-    this.setState(state => {
-      return (
-        (state.card.rating += parseInt(rate)),
-        state.card.count++,
-        (state.show = false)
-      );
-    });
+  setCard = () => {
+    let card = this.props.card;
+    console.log(card);
+    this.setState({ card: card });
   };
 
   render() {
-    console.log(this.props);
-    const { card } = this.state.card;
-    let back = (
-      <div>
-        <CardBack card={card} />
-        <CardControls
-          card={card}
-          updateCard={this.updateCard}
-          cardFun={this.cardFun}
-        />
-      </div>
-    );
+    console.log(this.state);
     return (
-      <div className="card text-center">
-        <CardFront card={this.props.card} />
-        <button onClick={() => this.setState({ show: true })}>Show</button>
-        {this.state.show ? back : null}
+      <div className="card card-column text-center">
+        <h4>
+          Front: <CardFront card={this.state.card} />
+        </h4>
+        <h4>
+          Back: <CardBack card={this.state.card} />
+        </h4>
+
+        <div className="card-footer text-muted">
+          <p>
+            card views: {this.props.card.count} card score:
+            {this.props.card.rating}
+          </p>
+          <button className="btn btn-sm btn-danger">Delete</button>
+          <button className="btn btn-sm btn-warning">Edit</button>
+          <button className="btn btn-sm btn-success">Reset Scores</button>
+        </div>
       </div>
     );
   }

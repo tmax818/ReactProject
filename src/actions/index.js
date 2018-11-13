@@ -3,6 +3,7 @@ export const FETCH_TOPICS = 'fetch-topics';
 export const FETCH_CARDS = 'fetch-cards';
 export const POST_TOPIC = 'post-topic';
 export const DELETE_TOPIC = 'delete-topic';
+export const DELETE_SUBJECT = 'delete-subject';
 export const POST_SUBJECT = 'post-subject';
 
 const ROOT_URL = 'http://localhost:3001/api';
@@ -29,6 +30,18 @@ export const deleteTopic = (path, value) => {
     type: DELETE_TOPIC,
     payload: req,
     value: value
+  };
+};
+
+export const deleteSubject = (path, subject) => {
+  const req = axios.delete(`${ROOT_URL}${path}/subjects/${subject}`, {
+    title: subject
+  });
+  console.log(path, subject, req);
+  return {
+    type: DELETE_SUBJECT,
+    payload: req,
+    value: subject
   };
 };
 

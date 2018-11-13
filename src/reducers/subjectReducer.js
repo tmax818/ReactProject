@@ -1,4 +1,4 @@
-import { POST_SUBJECT, FETCH_TOPICS } from '../actions';
+import { POST_SUBJECT, FETCH_TOPICS, DELETE_SUBJECT } from '../actions';
 
 const subjectReducer = (state = [], action) => {
   switch (action.type) {
@@ -9,6 +9,12 @@ const subjectReducer = (state = [], action) => {
         return topic.subjects;
       });
       return state.concat(...subjects);
+    case DELETE_SUBJECT:
+      console.log(state, action);
+      let newState = state.filter(subject => {
+        return subject.id !== action.value;
+      });
+      return newState;
     default:
       return state;
   }

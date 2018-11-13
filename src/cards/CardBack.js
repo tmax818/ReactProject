@@ -4,7 +4,7 @@ const CardFront = ({ card }) => {
   console.log(card);
   return (
     <div>
-      <h1>{card.back}</h1>
+      <span>{card.back}</span>
     </div>
   );
 };
