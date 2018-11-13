@@ -8,7 +8,11 @@ const Topic = ({ topic, index, match, handleDelete }) => {
         <div className="card-body text-center">
           <h1>{topic.title}</h1>
           {topic.subjects.map((subject, index) => {
-            return <li key={index}>{subject.title}</li>;
+            return (
+              <li key={index}>
+                {subject.title} {subject.cards.length} cards
+              </li>
+            );
           })}
           <Link
             key={index}
@@ -21,7 +25,7 @@ const Topic = ({ topic, index, match, handleDelete }) => {
             }}
             className="btn btn-sm btn-primary"
           >
-            Study
+            Edit
           </Link>
           <button
             className="btn btn-sm btn-danger"

@@ -12,7 +12,7 @@ const SubjectList = ({ location, match, subjects }) => {
       subjectlist
       <h3>{location.state.title}</h3>
       {subjectsList.map((subject, index) => {
-        return <Subject subject={subject} match={match} />;
+        return <Subject key={index} subject={subject} match={match} />;
       })}
     </div>
   );

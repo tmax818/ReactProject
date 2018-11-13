@@ -5,7 +5,6 @@ export default class CardControls extends Component {
     e.preventDefault();
     console.log(e.target.id);
     this.props.updateCard(e.target.id);
-    console.log(this.props.card);
     this.props.cardFun();
   };
   render() {

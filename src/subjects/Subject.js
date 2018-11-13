@@ -8,6 +8,7 @@ const Subject = props => {
       <div className="card bg-light">
         <div className="card-body text-center">
           <h3>{subject.title}</h3>
+          <p> {subject.cards.length} cards </p>
           <Link
             key={index}
             to={{
@@ -16,7 +17,7 @@ const Subject = props => {
             }}
             className="btn btn-sm btn-primary"
           >
-            Study
+            Edit
           </Link>
           <button className="btn btn-sm btn-danger">Delete</button>
         </div>

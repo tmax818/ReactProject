@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CardControls from './CardControls';
+import Card from './Card';
 import CardFront from './CardFront';
 import CardBack from './CardBack';
 
@@ -20,9 +21,9 @@ class CardsContainer extends Component {
     this.cardFun();
   }
 
-  componentWillUnmount() {
-    this.cardFun();
-  }
+  // componentWillUnmount() {
+  //   this.cardFun();
+  // }
 
   updateCard = rate => {
     this.setState(state => {
@@ -35,25 +36,16 @@ class CardsContainer extends Component {
   };
 
   render() {
-    console.log(this.state.card);
     const { title } = this.props.location.state;
-    let back = (
-      <div>
-        <CardBack card={this.state.card} />
-        <CardControls
-          card={this.state.card}
-          updateCard={this.updateCard}
-          cardFun={this.cardFun}
-        />
-      </div>
-    );
     return (
       <div>
         card container
         <h1>{title}</h1>
-        <CardFront card={this.state.card} />
-        <button onClick={() => this.setState({ show: true })}>Show</button>
-        {this.state.show ? back : null}
+        <Card
+          card={this.state.card}
+          updateCard={this.updateCard}
+          cardFun={this.cardFun}
+        />
       </div>
     );
   }
