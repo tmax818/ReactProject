@@ -16,7 +16,7 @@ const cardReducer = (state = [], action) => {
       return action.payload.data;
     case POST_CARD:
       console.log(state, action);
-      return state;
+      return state.concat(action.payload.data);
     default:
       return state;
   }
