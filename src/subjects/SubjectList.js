@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Subject from './Subject';
 
 const SubjectList = ({ location, match, subjects, handleDelete }) => {

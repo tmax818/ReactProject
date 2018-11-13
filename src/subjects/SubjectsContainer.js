@@ -12,7 +12,6 @@ class SubjectsContainer extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { location, match, subjects, postSubject } = this.props;
     return (
       <div>

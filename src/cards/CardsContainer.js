@@ -17,7 +17,6 @@ class CardsContainer extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { location, match, cards } = this.props;
     return (
       <div>

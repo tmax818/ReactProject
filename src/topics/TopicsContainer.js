@@ -17,7 +17,6 @@ class TopicsContainer extends Component {
   };
 
   render() {
-    console.log(this.props.topics);
     const { topics, match } = this.props;
     return (
       <div>
