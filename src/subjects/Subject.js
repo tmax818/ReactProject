@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Subject = props => {
-  const { subject, index, match, handleDelete } = props;
+const Subject = ({ subject, index, match, handleDelete }) => {
   console.log(handleDelete);
   return (
     <div className="card-group">

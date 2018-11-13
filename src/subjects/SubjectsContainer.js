@@ -13,20 +13,18 @@ class SubjectsContainer extends Component {
 
   render() {
     console.log(this.props);
+    const { location, match, subjects, postSubject } = this.props;
     return (
       <div>
         <SubjectList
-          location={this.props.location}
-          match={this.props.match}
-          subjects={this.props.subjects}
+          location={location}
+          match={match}
+          subjects={subjects}
           handleDelete={this.handleDelete}
         />
         <hr />
         <h4>Add New Subject</h4>
-        <NewForm
-          postFunc={this.props.postSubject}
-          path={this.props.match.url}
-        />
+        <NewForm postFunc={postSubject} path={match.url} />
       </div>
     );
   }

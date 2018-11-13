@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCards, postCard } from '../actions';
 import CardList from './CardList';
-import NewCard from './NewCard';
+import NewCard from './card/NewCard';
 
 class CardsContainer extends Component {
   state = {
@@ -18,7 +18,7 @@ class CardsContainer extends Component {
 
   render() {
     console.log(this.props);
-    const { location, match } = this.props;
+    const { location, match, cards } = this.props;
     return (
       <div>
         card container
@@ -26,7 +26,7 @@ class CardsContainer extends Component {
         <button onClick={() => this.setState({ show: true })}>
           Edit Cards
         </button>
-        {this.state.show ? <CardList cards={this.props.cards} /> : null}
+        {this.state.show ? <CardList cards={cards} /> : null}
         <hr />
         <h4>Add New Card</h4>
         <NewCard

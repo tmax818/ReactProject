@@ -58,7 +58,6 @@ class NewCard extends Component {
               value={this.state.back}
               type="text"
               onChange={this.handleBackChange}
-              type="text"
               className="form-control"
               id="back"
               placeholder="back"

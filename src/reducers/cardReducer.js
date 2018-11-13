@@ -1,4 +1,4 @@
-import { FETCH_CARDS, FETCH_TOPICS, POST_CARD } from '../actions';
+import { FETCH_CARDS, POST_CARD } from '../actions';
 
 const cardReducer = (state = [], action) => {
   switch (action.type) {

@@ -18,12 +18,13 @@ class TopicsContainer extends Component {
 
   render() {
     console.log(this.props.topics);
+    const { topics, match } = this.props;
     return (
       <div>
         <p>Topics Container</p>
         <TopicList
-          topics={this.props.topics}
-          match={this.props.match}
+          topics={topics}
+          match={match}
           handleDelete={this.handleDelete}
         />
         <hr />
