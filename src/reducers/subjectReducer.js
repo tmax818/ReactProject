@@ -10,7 +10,6 @@ const subjectReducer = (state = [], action) => {
       });
       return state.concat(...subjects);
     case DELETE_SUBJECT:
-      console.log(state, action);
       let newState = state.filter(subject => {
         return subject.id !== action.value;
       });

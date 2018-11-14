@@ -1,11 +1,12 @@
 import axios from 'axios';
 export const FETCH_TOPICS = 'fetch-topics';
-export const FETCH_CARDS = 'fetch-cards';
 export const POST_TOPIC = 'post-topic';
 export const DELETE_TOPIC = 'delete-topic';
 export const DELETE_SUBJECT = 'delete-subject';
 export const POST_SUBJECT = 'post-subject';
+export const FETCH_CARDS = 'fetch-cards';
 export const POST_CARD = 'post-card';
+export const DELETE_CARD = 'delete-card';
 
 const ROOT_URL = 'http://localhost:3001/api';
 
@@ -67,5 +68,16 @@ export const postCard = (path, value) => {
   return {
     type: POST_CARD,
     payload: req
+  };
+};
+
+export const deleteCard = (path, value) => {
+  const req = axios.delete(`${ROOT_URL}${path}/cards/${value}`, {
+    card: value
+  });
+  return {
+    type: DELETE_CARD,
+    payload: req,
+    value: value
   };
 };

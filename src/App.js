@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import TopicsContainer from './topics/TopicsContainer';
 import SubjectsContainer from './subjects/SubjectsContainer';
 import CardsContainer from './cards/CardsContainer';
+import CardEdit from './cards/CardEdit';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -19,6 +20,11 @@ class App extends Component {
             exact
             path="/topics/:tid/subjects/:sid"
             component={CardsContainer}
+          />
+          <Route
+            exact
+            path="/topics/:tid/subjects/:sid/cards/:cid"
+            component={CardEdit}
           />
         </Switch>
       </div>

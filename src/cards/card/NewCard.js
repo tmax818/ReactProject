@@ -31,13 +31,11 @@ class NewCard extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.front, this.state.back);
     this.props.handleNewCard(this.state);
     this.setState({ front: '', back: '' });
   };
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

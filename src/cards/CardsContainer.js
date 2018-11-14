@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCards, postCard } from '../actions';
+import { fetchCards, postCard, deleteCard } from '../actions';
 import CardList from './CardList';
 import NewCard from './card/NewCard';
 
@@ -16,16 +16,22 @@ class CardsContainer extends Component {
     this.props.postCard(this.props.match.url, card);
   };
 
+  handleDelete = x => {
+    this.props.deleteCard(this.props.match.url, x);
+  };
+
   render() {
     const { location, match, cards } = this.props;
     return (
       <div>
         card container
         <h3>{location.state.title}</h3>
-        <button onClick={() => this.setState({ show: true })}>
-          Edit Cards
-        </button>
-        {this.state.show ? <CardList cards={cards} /> : null}
+        <CardList
+          cards={cards}
+          match={match}
+          location={location}
+          handleDelete={this.handleDelete}
+        />
         <hr />
         <h4>Add New Card</h4>
         <NewCard
@@ -53,6 +59,10 @@ const mapDispathtoProps = dispatch => {
 
     postCard: (path, value) => {
       dispatch(postCard(path, value));
+    },
+
+    deleteCard: (path, value) => {
+      dispatch(deleteCard(path, value));
     }
   };
 };

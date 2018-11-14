@@ -1,4 +1,4 @@
-import { FETCH_CARDS, POST_CARD } from '../actions';
+import { FETCH_CARDS, POST_CARD, DELETE_CARD } from '../actions';
 
 const cardReducer = (state = [], action) => {
   switch (action.type) {
@@ -15,8 +15,13 @@ const cardReducer = (state = [], action) => {
     case FETCH_CARDS:
       return action.payload.data;
     case POST_CARD:
-      console.log(state, action);
       return state.concat(action.payload.data);
+    case DELETE_CARD:
+      console.log(state, action);
+      let newState = state.filter(card => {
+        return card.id !== action.value;
+      });
+      return newState;
     default:
       return state;
   }

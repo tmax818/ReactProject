@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import CardControls from './CardControls';
-import CardFront from './CardFront';
-import CardBack from './CardBack';
+import CardFront from './card/CardFront';
+import CardBack from './card/CardBack';
 
 class Card extends Component {
   state = {
-    show: false,
     card: {},
+    show: false,
     Editing: false
   };
 
