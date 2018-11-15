@@ -85,3 +85,18 @@ Here's a concise definition of the container component pattern:
 
 - They are responsible for providing data and behavior to their children (usually
   presentational components).
+
+https://learn.co/tracks/full-stack-web-development-v6/redux/async-redux/redux-thunk
+_Components_
+[Functional vs Class-Components in React – David Jöch – Medium](https://medium.com/@Zwenza/functional-vs-class-components-in-react-231e3fbd7108)
+
+_Props vs State_
+[Lucy | ReactJS: Props vs. State](https://lucybain.com/blog/2016/react-state-vs-pros/)
+[Understanding ReactJS — setState – Bartosz Szczeciński – Medium](https://medium.com/@baphemot/understanding-reactjs-setstate-a4640451865b)
+
+_React General_
+[Thinking in React – React](https://reactjs.org/docs/thinking-in-react.html)
+[All the fundamental React.js concepts, jammed into this single Medium article](https://medium.freecodecamp.org/all-the-fundamental-react-js-concepts-jammed-into-this-single-medium-article-c83f9b53eac2)
+
+_Promises_
+[The Promise of a Burger Party - Mariko Kosaka](https://kosamari.com/notes/the-promise-of-a-burger-party)
