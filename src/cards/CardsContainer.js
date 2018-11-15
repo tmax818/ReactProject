@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCards, postCard, deleteCard, updateCard } from '../actions';
 import EditCard from './EditCard';
+import StudyCard from './StudyCard';
 
 class CardsContainer extends Component {
   state = {
@@ -26,7 +27,16 @@ class CardsContainer extends Component {
 
   toggleShow = () => {
     this.setState(prevState => {
-      return { showEdit: !prevState.showEdit };
+      return { showEdit: !prevState.showEdit, showStudy: false };
+    });
+  };
+
+  toggleStudyShow = () => {
+    this.setState(prevState => {
+      return {
+        showStudy: !prevState.showStudy,
+        showEdit: false
+      };
     });
   };
 
@@ -37,7 +47,7 @@ class CardsContainer extends Component {
         card container
         <h3>{location.state.title}</h3>
         <button onClick={this.toggleShow}>Edit Cards</button>
-        <button>Study Cards</button>
+        <button onClick={this.toggleStudyShow}>Study Cards</button>
         {this.state.showEdit && (
           <EditCard
             cards={cards}
@@ -49,6 +59,7 @@ class CardsContainer extends Component {
             subject_id={match.params.sid}
           />
         )}
+        {this.state.showStudy && <StudyCard cards={cards} />}
       </div>
     );
   }

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import CardUpdate from './CardUpdate';
-import './Card.css';
 
 class Card extends Component {
   state = {
@@ -18,7 +16,6 @@ class Card extends Component {
 
   render() {
     const { location, match, card, handleDelete, handleUpdate } = this.props;
-    console.log(handleUpdate);
     let display = (
       <div>
         <span> Front: {card.front}</span>

@@ -5,7 +5,7 @@ const CardFront = ({ card }) => {
   console.log(card);
   return (
     <div>
-      <span>{card.back}</span>
+      <h3>{card.back}</h3>
       <CardControls />
     </div>
   );
