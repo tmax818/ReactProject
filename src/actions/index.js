@@ -7,6 +7,7 @@ export const POST_SUBJECT = 'post-subject';
 export const FETCH_CARDS = 'fetch-cards';
 export const POST_CARD = 'post-card';
 export const DELETE_CARD = 'delete-card';
+export const UPDATE_CARD = 'update-card';
 
 const ROOT_URL = 'http://localhost:3001/api';
 
@@ -77,6 +78,18 @@ export const deleteCard = (path, value) => {
   });
   return {
     type: DELETE_CARD,
+    payload: req,
+    value: value
+  };
+};
+
+export const updateCard = (path, value) => {
+  console.log(path, value);
+  const req = axios.put(`${ROOT_URL}${path}/cards/${value.id}`, {
+    card: value
+  });
+  return {
+    type: UPDATE_CARD,
     payload: req,
     value: value
   };

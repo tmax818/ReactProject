@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCards, postCard, deleteCard } from '../actions';
-import CardList from './CardList';
-import NewCard from './card/NewCard';
+import { fetchCards, postCard, deleteCard, updateCard } from '../actions';
+import EditCard from './EditCard';
 
 class CardsContainer extends Component {
   state = {
-    show: false
+    showEdit: false,
+    showStudy: false
   };
   componentDidMount() {
     this.props.fetchCards(this.props.match.url);
@@ -16,28 +16,39 @@ class CardsContainer extends Component {
     this.props.postCard(this.props.match.url, card);
   };
 
-  handleDelete = x => {
-    this.props.deleteCard(this.props.match.url, x);
+  handleDelete = card => {
+    this.props.deleteCard(this.props.match.url, card);
+  };
+
+  handleUpdate = val => {
+    this.props.updateCard(this.props.match.url, val);
+  };
+
+  toggleShow = () => {
+    this.setState(prevState => {
+      return { showEdit: !prevState.showEdit };
+    });
   };
 
   render() {
     const { location, match, cards } = this.props;
     return (
-      <div>
+      <div className="text-center">
         card container
         <h3>{location.state.title}</h3>
-        <CardList
-          cards={cards}
-          match={match}
-          location={location}
-          handleDelete={this.handleDelete}
-        />
-        <hr />
-        <h4>Add New Card</h4>
-        <NewCard
-          handleNewCard={this.handleNewCard}
-          subject_id={match.params.sid}
-        />
+        <button onClick={this.toggleShow}>Edit Cards</button>
+        <button>Study Cards</button>
+        {this.state.showEdit && (
+          <EditCard
+            cards={cards}
+            match={match}
+            location={location}
+            handleDelete={this.handleDelete}
+            handleUpdate={this.handleUpdate}
+            handleNewCard={this.handleNewCard}
+            subject_id={match.params.sid}
+          />
+        )}
       </div>
     );
   }
@@ -63,6 +74,10 @@ const mapDispathtoProps = dispatch => {
 
     deleteCard: (path, value) => {
       dispatch(deleteCard(path, value));
+    },
+
+    updateCard: (path, value) => {
+      dispatch(updateCard(path, value));
     }
   };
 };

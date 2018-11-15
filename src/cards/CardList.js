@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 
-const CardList = ({ location, match, cards, handleDelete }) => {
+const CardList = ({ location, match, cards, handleDelete, handleUpdate }) => {
   return (
     <div>
       cardlist
@@ -13,6 +13,7 @@ const CardList = ({ location, match, cards, handleDelete }) => {
             location={location}
             match={match}
             handleDelete={() => handleDelete(card.id)}
+            handleUpdate={handleUpdate}
           />
         );
       })}

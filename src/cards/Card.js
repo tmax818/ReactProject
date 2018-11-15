@@ -1,37 +1,56 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import CardUpdate from './CardUpdate';
+import './Card.css';
 
 class Card extends Component {
   state = {
     card: {},
     show: false,
-    Editing: false
+    editing: false
+  };
+
+  toggleShow = () => {
+    this.setState(prevState => {
+      return { editing: !prevState.editing };
+    });
   };
 
   render() {
-    const { location, match, card, handleDelete } = this.props;
+    const { location, match, card, handleDelete, handleUpdate } = this.props;
+    console.log(handleUpdate);
+    let display = (
+      <div>
+        <span> Front: {card.front}</span>
+        <br />
+        <span> Back: {card.back}</span>
+      </div>
+    );
     return (
-      <div className="card-group">
+      <div className="card">
         <div className="card bg-light">
           <div className="card-body text-center">
-            <span> Front: {card.front}</span>
-            <hr />
-            <span> Back: {card.back}</span>
+            {this.state.editing ? (
+              <CardUpdate
+                card={card}
+                handleUpdate={handleUpdate}
+                toggleShow={this.toggleShow}
+              />
+            ) : (
+              display
+            )}
+
             <hr />
             <p>
               card views: {card.count} card score:
               {card.rating}
             </p>
-            <Link
-              to={{
-                pathname: `${match.url}/cards/${card.id}`,
-                state: { state: 'test' }
-              }}
-              className="btn btn-sm btn-warning"
+            <button
+              onClick={this.toggleShow}
+              className="btn btn-sm btn-success"
             >
               Edit
-            </Link>
-            <button className="btn btn-sm btn-success">Reset Scores</button>
+            </button>
             <button
               onClick={() => handleDelete(card.id)}
               className="btn btn-sm btn-danger"
