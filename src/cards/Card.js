@@ -15,7 +15,7 @@ class Card extends Component {
   };
 
   render() {
-    const { location, match, card, handleDelete, handleUpdate } = this.props;
+    const { card, handleDelete, handleUpdate } = this.props;
     let display = (
       <div>
         <span> Front: {card.front}</span>

@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { postSubject, deleteSubject } from '../actions';
+import { postSubject, deleteSubject, fetchSubjects } from '../actions';
 import SubjectList from './SubjectList';
 import NewForm from '../common/NewForm';
 
 class SubjectsContainer extends Component {
+  componentDidMount() {
+    this.props.fetchSubjects();
+  }
+
   handleDelete = (path, subject, e) => {
-    //e.preventDefault();
-    console.log(path, subject, e);
     this.props.deleteSubject(path, subject);
   };
 
   render() {
     const { location, match, subjects, postSubject } = this.props;
+    console.log(this.props.subjects);
     return (
       <div>
         <SubjectList
@@ -44,6 +47,10 @@ const mapDispathtoProps = dispatch => {
 
     deleteSubject: (path, subject) => {
       dispatch(deleteSubject(path, subject));
+    },
+
+    fetchSubjects: () => {
+      dispatch(fetchSubjects());
     }
   };
 };

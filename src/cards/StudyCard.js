@@ -1,21 +1,38 @@
 import React, { Component } from 'react';
+import CardControls from './card/CardControls';
 
 export default class StudyCard extends Component {
   state = {
-    cards: [],
-    show: false
+    show: false,
+    count: 0
   };
 
-  componentDidMount() {
+  changeCount = () => {
     this.setState(prevState => {
-      return {
-        cards: prevState.cards.concat(this.props.cards)
-      };
+      return { count: prevState.count + 1 };
     });
-  }
+  };
 
   render() {
-    console.log(this.state.cards[0]);
-    return <div className="card">holder</div>;
+    let count = this.state.count;
+    console.log(this.props);
+    let back = (
+      <div>
+        <h3>{this.props.cards[count].back}</h3>
+        <CardControls
+          card={this.props.cards[count]}
+          updateCard={this.props.updateCard}
+          path={this.props.path}
+          changeCount={this.changeCount}
+        />
+      </div>
+    );
+    return (
+      <div className="card">
+        <h3>{this.props.cards[count].front}</h3>
+        <button onClick={() => this.setState({ show: true })}>show</button>
+        {this.state.show && back}
+      </div>
+    );
   }
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Topic = ({ topic, index, match, handleDelete }) => {
   return (
-    <div className="card-group">
+    <div className="card-columns">
       <div className="card bg-light">
         <div className="card-body text-center">
           <h4>{topic.title} Subjects List:</h4>

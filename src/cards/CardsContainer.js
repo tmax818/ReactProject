@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCards, postCard, deleteCard, updateCard } from '../actions';
+import {
+  fetchCards,
+  fetchCard,
+  postCard,
+  deleteCard,
+  updateCard
+} from '../actions';
 import EditCard from './EditCard';
 import StudyCard from './StudyCard';
 
@@ -11,6 +17,7 @@ class CardsContainer extends Component {
   };
   componentDidMount() {
     this.props.fetchCards(this.props.match.url);
+    this.props.fetchCard(this.props.match.url, 14);
   }
 
   handleNewCard = card => {
@@ -42,6 +49,7 @@ class CardsContainer extends Component {
 
   render() {
     const { location, match, cards } = this.props;
+    console.log(match.url);
     return (
       <div className="text-center">
         card container
@@ -59,7 +67,14 @@ class CardsContainer extends Component {
             subject_id={match.params.sid}
           />
         )}
-        {this.state.showStudy && <StudyCard cards={cards} />}
+        {this.state.showStudy && (
+          <StudyCard
+            fetchCard={this.props.fetchCard}
+            cards={cards}
+            path={match.url}
+            updateCard={this.props.updateCard}
+          />
+        )}
       </div>
     );
   }
@@ -77,6 +92,10 @@ const mapDispathtoProps = dispatch => {
   return {
     fetchCards: path => {
       dispatch(fetchCards(path));
+    },
+
+    fetchCard: (path, value) => {
+      dispatch(fetchCard(path, value));
     },
 
     postCard: (path, value) => {
