@@ -3,19 +3,18 @@ import { NavLink } from 'react-router-dom';
 
 const Header = props => {
   return (
-    <nav className="ui pointing menu">
+    <div className="ui tabular menu">
       <div className="container">
-        <a href="/" className="active item">
-          Flash Study
-        </a>
-        <NavLink className="item" to="/">
-          Home
-        </NavLink>
-        <NavLink className="item" to="/topics">
-          Topics
-        </NavLink>
+        <div className="right menu">
+          <NavLink className="item" to="/">
+            Home
+          </NavLink>
+          <NavLink className="item" to="/topics">
+            Topics
+          </NavLink>
+        </div>
       </div>
-    </nav>
+    </div>
   );
 };
 

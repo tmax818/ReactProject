@@ -24,9 +24,9 @@ class Card extends Component {
       </div>
     );
     return (
-      <div className="card">
-        <div className="card bg-light">
-          <div className="card-body text-center">
+      <div className="ui cards">
+        <div className="card">
+          <div className="content">
             {this.state.editing ? (
               <CardUpdate
                 card={card}
@@ -38,22 +38,24 @@ class Card extends Component {
             )}
 
             <hr />
-            <p>
+            <p className="extra content">
               card views: {card.count} card score:
               {card.rating}
             </p>
-            <button
-              onClick={this.toggleShow}
-              className="btn btn-sm btn-success"
-            >
-              Edit
-            </button>
-            <button
-              onClick={() => handleDelete(card.id)}
-              className="btn btn-sm btn-danger"
-            >
-              Delete
-            </button>
+            <div className="ui two buttons">
+              <button
+                onClick={this.toggleShow}
+                className="ui basic green button"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDelete(card.id)}
+                className="ui basic red button"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       </div>

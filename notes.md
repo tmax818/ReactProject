@@ -100,3 +100,34 @@ _React General_
 
 _Promises_
 [The Promise of a Burger Party - Mariko Kosaka](https://kosamari.com/notes/the-promise-of-a-burger-party)
+
+<Link
+  key={index}
+  to={{
+    pathname: `${match.url}/${topic.id}`,
+    state: { title: topic.title, subjects: topic.subjects }
+  }}
+>
+  {topic.title}
+</Link>;
+
+      <h3>Cards for {subject.title}</h3>
+      <p> {subject.cards.length} cards </p>
+      <Link
+        key={index}
+        to={{
+          pathname: `${match.url}/subjects/${subject.id}`,
+          state: { cards: subject.cards, title: subject.title }
+        }}
+        className="btn btn-sm btn-primary"
+      >
+        {subject.title}
+      </Link>
+      <button
+        onClick={e => {
+          return handleDelete(match.url, subject.id);
+        }}
+        className="btn btn-sm btn-danger"
+      >
+        Delete
+      </button>

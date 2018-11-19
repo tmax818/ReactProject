@@ -3,27 +3,31 @@ import { Link } from 'react-router-dom';
 
 const Subject = ({ subject, index, match, handleDelete }) => {
   return (
-    <div>
-      <h3>Cards for {subject.title}</h3>
-      <p> {subject.cards.length} cards </p>
-      <Link
-        key={index}
-        to={{
-          pathname: `${match.url}/subjects/${subject.id}`,
-          state: { cards: subject.cards, title: subject.title }
-        }}
-        className="btn btn-sm btn-primary"
-      >
-        {subject.title}
-      </Link>
-      <button
-        onClick={e => {
-          return handleDelete(match.url, subject.id);
-        }}
-        className="btn btn-sm btn-danger"
-      >
-        Delete
-      </button>
+    <div className="ui equal width grid">
+      <div className="ui cards">
+        <div className="card">
+          <div className="content">
+            <div className="header">{subject.title}</div>
+            <div className="meta"> Subject(s)</div>
+            <div className="description">Lorem ipsum dolor</div>
+          </div>
+          <div className="extra content">
+            <div className="ui two buttons">
+              <Link
+                className="ui basic green button"
+                key={index}
+                to={{
+                  pathname: `${match.url}/subjects/${subject.id}`,
+                  state: { cards: subject.cards, title: subject.title }
+                }}
+              >
+                Study
+              </Link>
+              <div className="ui basic red button">Delete</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
