@@ -11,13 +11,11 @@ class TopicsContainer extends Component {
     }
   }
 
-  handleDelete = (path, topic, e) => {
-    e.preventDefault();
+  handleDelete = (path, topic) => {
     this.props.deleteTopic(path, topic);
   };
 
   render() {
-    console.log(this.props);
     const { topics, match } = this.props;
     return (
       <div>

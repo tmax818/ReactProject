@@ -5,7 +5,7 @@ import TopicsContainer from './topics/TopicsContainer';
 import SubjectsContainer from './subjects/SubjectsContainer';
 import CardsContainer from './cards/CardsContainer';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   render() {
