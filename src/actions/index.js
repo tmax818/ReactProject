@@ -91,7 +91,6 @@ export const fetchCats = () => {
 
 export const postCard = (path, value) => {
   const req = axios.post(`${ROOT_URL}${path}/cards`, { card: value });
-  console.log(path, value);
   return {
     type: POST_CARD,
     payload: req

@@ -11,7 +11,6 @@ const cardReducer = (state = [], action) => {
     case FETCH_CARDS:
       return action.payload.data;
     case FETCH_CARD:
-      console.log(state, action);
       return action.res;
     case POST_CARD:
       return state.concat(action.payload.data);
@@ -21,7 +20,6 @@ const cardReducer = (state = [], action) => {
       });
       return newState;
     case UPDATE_CARD:
-      console.log(state, action);
       let upState = state.filter(card => {
         return card.id !== action.value.id;
       });

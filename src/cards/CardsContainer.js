@@ -17,7 +17,6 @@ class CardsContainer extends Component {
   };
   componentDidMount() {
     this.props.fetchCards(this.props.match.url);
-    this.props.fetchCard(this.props.match.url, 14);
   }
 
   handleNewCard = card => {
@@ -49,7 +48,6 @@ class CardsContainer extends Component {
 
   render() {
     const { location, match, cards } = this.props;
-    console.log(match.url);
     return (
       <div className="text-center">
         card container

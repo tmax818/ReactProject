@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Topic = ({ topic, index, match, handleDelete }) => {
   return (
-    <div className="ui cards">
+    <div className="ui four cards">
       <div className="card">
         <div className="content">
           <div className="header">{topic.title}</div>

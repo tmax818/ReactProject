@@ -15,7 +15,6 @@ class SubjectsContainer extends Component {
 
   render() {
     const { location, match, subjects, postSubject } = this.props;
-    console.log(this.props.subjects);
     return (
       <div>
         <SubjectList

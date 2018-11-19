@@ -20,7 +20,6 @@ const subjectReducer = (state = [], action) => {
       });
       return newState;
     case FETCH_SUBJECTS:
-      console.log(state, action);
       return state;
     default:
       return state;
