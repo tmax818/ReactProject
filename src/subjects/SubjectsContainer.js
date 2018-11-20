@@ -9,12 +9,18 @@ class SubjectsContainer extends Component {
     this.props.fetchSubjects();
   }
 
-  handleDelete = (path, subject, e) => {
-    this.props.deleteSubject(path, subject);
+  handleDelete = subject => {
+    console.log(subject);
+    this.props.deleteSubject(this.props.match.url, subject);
+  };
+
+  handleNewSubject = subject => {
+    console.log(subject);
+    this.props.postSubject(this.props.match.url, subject);
   };
 
   render() {
-    const { location, match, subjects, postSubject } = this.props;
+    const { location, match, subjects } = this.props;
     return (
       <div>
         <SubjectList
@@ -25,7 +31,7 @@ class SubjectsContainer extends Component {
         />
         <hr />
         <h4>Add New Subject</h4>
-        <NewForm postFunc={postSubject} path={match.url} />
+        <NewForm handleNew={this.handleNewSubject} />
       </div>
     );
   }

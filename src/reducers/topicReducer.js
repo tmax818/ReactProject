@@ -10,6 +10,7 @@ const topicReducer = (state = [], action) => {
       let newstate = state.filter(topic => {
         return topic.id !== action.value;
       });
+      console.log(newstate);
       return newstate;
     default:
       return state;

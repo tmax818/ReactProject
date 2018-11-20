@@ -16,7 +16,7 @@ const SubjectList = ({ location, match, subjects, handleDelete }) => {
             key={index}
             subject={subject}
             match={match}
-            handleDelete={handleDelete}
+            handleDelete={() => handleDelete(subject.id)}
           />
         );
       })}

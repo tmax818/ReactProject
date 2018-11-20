@@ -30,6 +30,7 @@ export const postTopic = (path, value) => {
 };
 
 export const deleteTopic = (path, value) => {
+  console.log(path, value);
   const req = axios.delete(`${ROOT_URL}${path}/${value}`, { title: value });
   return {
     type: DELETE_TOPIC,

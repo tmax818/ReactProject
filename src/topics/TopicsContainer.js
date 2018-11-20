@@ -11,8 +11,13 @@ class TopicsContainer extends Component {
     }
   }
 
-  handleDelete = (path, topic) => {
-    this.props.deleteTopic(path, topic);
+  handleDelete = topic => {
+    this.props.deleteTopic(this.props.match.url, topic);
+  };
+
+  handleNewTopic = topic => {
+    console.log(topic);
+    this.props.postTopic(this.props.match.url, topic);
   };
 
   render() {
@@ -27,7 +32,7 @@ class TopicsContainer extends Component {
         />
         <hr />
         <h4>Add New Topic</h4>
-        <NewForm postFunc={this.props.postTopic} path={this.props.match.url} />
+        <NewForm handleNew={this.handleNewTopic} />
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Topic from './Topic';
 
 const TopicList = ({ topics, match, handleDelete }) => {
@@ -10,7 +9,7 @@ const TopicList = ({ topics, match, handleDelete }) => {
         topic={topic}
         index={index}
         match={match}
-        handleDelete={handleDelete}
+        handleDelete={() => handleDelete(topic.id)}
       />
     );
   });
