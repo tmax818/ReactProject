@@ -19,11 +19,13 @@ const cardReducer = (state = [], action) => {
         return card.id !== action.value;
       });
       return newState;
+    // case UPDATE_CARD:
+    //   let upState = state.filter(card => {
+    //     return card.id !== action.value.id;
+    //   });
+    //   return upState.concat(action.value);
     case UPDATE_CARD:
-      let upState = state.filter(card => {
-        return card.id !== action.value.id;
-      });
-      return upState.concat(action.value);
+      return state;
     default:
       return state;
   }

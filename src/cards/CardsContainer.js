@@ -7,8 +7,13 @@ import {
   deleteCard,
   updateCard
 } from '../actions';
+import Card from './Card';
 
 class CardsContainer extends Component {
+  state = {
+    show: false,
+    count: 0
+  };
   componentDidMount() {
     this.props.fetchCards(this.props.match.url);
   }
@@ -22,11 +27,38 @@ class CardsContainer extends Component {
   };
 
   handleUpdate = val => {
+    console.log(val);
     this.props.updateCard(this.props.match.url, val);
   };
 
+  makeCardsArray = () => {
+    let cardsArray = this.props.cards.map(card => {
+      return (
+        <Card
+          card={card}
+          incrementCount={this.incrementCount}
+          show={this.state.show}
+          showCard={this.showCard}
+          handleUpdate={this.handleUpdate}
+        />
+      );
+    });
+    return cardsArray;
+  };
+
+  incrementCount = () => {
+    let count = this.state.count + 1;
+    this.setState({ count: count, show: false });
+  };
+
+  showCard = () => {
+    this.setState({ show: true });
+  };
+
   render() {
-    return <div>cardcontainer</div>;
+    let arr = this.makeCardsArray();
+    console.log(arr);
+    return <div>{arr[this.state.count]}</div>;
   }
 }
 
