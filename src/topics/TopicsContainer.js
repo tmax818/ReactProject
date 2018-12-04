@@ -24,7 +24,6 @@ class TopicsContainer extends Component {
     const { topics, match } = this.props;
     return (
       <div>
-        <p>Topics Container</p>
         <TopicList
           topics={topics}
           match={match}
