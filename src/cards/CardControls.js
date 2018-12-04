@@ -7,7 +7,6 @@ export default class CardControls extends Component {
   };
 
   updateCard = delta => {
-    console.log(delta);
     this.setState(prevState => {
       return {
         count: prevState.card.count++,
@@ -15,7 +14,6 @@ export default class CardControls extends Component {
         show: true
       };
     });
-    console.log(this.state);
     this.props.handleUpdate(this.state.card);
   };
 

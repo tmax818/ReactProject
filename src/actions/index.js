@@ -30,7 +30,6 @@ export const postTopic = (path, value) => {
 };
 
 export const deleteTopic = (path, value) => {
-  console.log(path, value);
   const req = axios.delete(`${ROOT_URL}${path}/${value}`, { title: value });
   return {
     type: DELETE_TOPIC,
@@ -64,29 +63,31 @@ export const postSubject = (path, value) => {
   };
 };
 
+// export const fetchCards = path => {
+//   const req = axios.get(`${ROOT_URL}/${path}/cards`);
+//   return {
+//     type: FETCH_CARDS,
+//     payload: req
+//   };
+// };
+
 export const fetchCards = path => {
-  const req = axios.get(`${ROOT_URL}/${path}/cards`);
-  return {
-    type: FETCH_CARDS,
-    payload: req
+  return dispatch => {
+    return axios.get(`${ROOT_URL}/${path}/cards`).then(res =>
+      dispatch({
+        type: FETCH_CARDS,
+        payload: res
+      })
+    );
   };
 };
 
 export const fetchCard = (path, value) => {
   return dispatch => {
-    dispatch({ type: 'SOMETHING' });
+    //dispatch({ type: 'SOMETHING' });
     return fetch(`${ROOT_URL}${path}/cards/${value}`)
       .then(res => res.json())
       .then(res => dispatch({ type: FETCH_CARD, res }));
-  };
-};
-
-export const fetchCats = () => {
-  return dispatch => {
-    dispatch({ type: 'START_ADDING_CATS_REQUEST' });
-    return fetch('http://www.catapi.com')
-      .then(response => response.json())
-      .then(cats => dispatch({ type: 'ADD_CATS', cats }));
   };
 };
 

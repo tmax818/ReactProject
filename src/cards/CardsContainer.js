@@ -27,7 +27,6 @@ class CardsContainer extends Component {
   };
 
   handleUpdate = val => {
-    console.log(val);
     this.props.updateCard(this.props.match.url, val);
   };
 
@@ -57,7 +56,6 @@ class CardsContainer extends Component {
 
   render() {
     let arr = this.makeCardsArray();
-    console.log(arr);
     return <div>{arr[this.state.count]}</div>;
   }
 }
