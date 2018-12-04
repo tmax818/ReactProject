@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CardControls from './CardControls';
 
 const Card = ({ card, incrementCount, show, showCard, handleUpdate }) => {
